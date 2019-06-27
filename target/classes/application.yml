@@ -1,0 +1,28 @@
+server:
+  port: 8090
+
+
+spring:
+  datasource:
+    driver: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://localhost:3306/myschool?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    username: root
+    password: 5683
+  thymeleaf:
+    cache: false
+  mvc:
+    date-format: yyyy-MM-dd HH-mm-ss
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/static
+  http:
+    encoding:
+      force-response: true
+  jpa:
+    show-sql: true
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: cn.shaojie.student.model
+
+
+

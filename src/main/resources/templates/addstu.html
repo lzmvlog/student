@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加学生信息</title>
+    <link rel="stylesheet" href="" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}">
+</head>
+<body>
+    <div th:include="public :: public"></div>
+    <div style="padding: 50px 350px 0 350px">
+        <form action="/addStuInfo" method="post">
+            <input type="hidden" name="_method" value="put" th:if="${stuOne != null}">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" th:value="${stuOne != null } ? ${stuOne.getName()}"
+                       aria-describedby="emailHelp" placeholder="Student name">
+            </div>
+            <div class="form-group">
+                <label>Age</label>
+                <input type="text" name="age" class="form-control" th:value="${stuOne != null } ? ${stuOne.getAge()}"
+                       aria-describedby="emailHelp" placeholder="Student age">
+            </div>
+            <div class="form-group">
+                <label>Greade</label>
+                <select class="form-control" name="gradeId" placeholder="Student reade">
+                    <option th:each="grade : ${grade}" th:value=" ${grade.getId()}"
+                            th:selected="${stuOne != null } ? ${grade.getId()} == ${stuOne.getGradeId()}"
+                            th:text="${grade.getGradeName()}"></option>
+                    <!--th:selected="${stuOne != null } ? ${grade.getId()} == ${stuOne.getGrade().getId()}"-->
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" th:text="${stuOne != null } ? '修改' : '新增'">保存</button>
+        </form>
+    </div>
+</body>
+</html>

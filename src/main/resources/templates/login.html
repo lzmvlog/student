@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <title>登录后台管理</title>
+      <link rel="stylesheet" th:href="@{../webjars/bootstrap/4.3.1/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{../static/css/signin.css}">
+  </head>
+  <body class="text-center">
+      <form class="form-signin" action="/show" method="post">
+          <img src="../static/img/bootstrap-solid.svg"
+               th:src="@{../static/img/bootstrap-solid.svg}" class="mb-4"
+               alt="" width="72" height="72">
+          <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+          <label for="inputEmail" class="sr-only">Email address</label>
+              <input type="text" id="inputEmail"  class="form-control"
+                     name="adminName" th:value="1591313226"
+                     placeholder="Email address" required autofocus>
+          <label for="inputPassword" class="sr-only">Password</label>
+              <input type="password" id="inputPassword" class="form-control"
+                     name="password" th:value="123456"
+                     placeholder="Password" required><br>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+      </form>
+</body>
+</html>

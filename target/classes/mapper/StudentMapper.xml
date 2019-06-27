@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.shaojie.student.dao.StudentDao">
+
+    <resultMap id="studentAllInfo" type="cn.shaojie.student.model.Student">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="gradeId" property="gradeId"/>
+        <association property="grade" javaType="cn.shaojie.student.model.Grade">
+            <id column="id" property="id"/>
+            <id column="gradeName" property="gradeName"/>
+        </association>
+    </resultMap>
+    <insert id="addStu">
+        INSERT INTO student ( student.`name`, student.age, student.gradeid )
+        VALUE
+            (#{name},#{age},#{gradeId})
+    </insert>
+
+    <delete id="deleteStu">
+        DELETE
+        FROM
+            student
+        WHERE
+            student.id = #{id}
+    </delete>
+
+    <select id="selectAllStudentInfo" resultMap="studentAllInfo">
+        SELECT
+            student.id,
+            student.`name`,
+            student.age,
+            student.gradeid,
+            grade.gradename
+        FROM
+            student
+            INNER JOIN grade ON student.gradeid = grade.id
+    </select>
+
+    <select id="selectGradeInfo" resultType="cn.shaojie.student.model.Grade">
+        SELECT
+            grade.id,grade.gradename
+        FROM
+            `grade`
+    </select>
+    <select id="seleteStuByOne" resultMap="studentAllInfo">
+          SELECT
+            student.id,
+            student.`name`,
+            student.age,
+            student.gradeid,
+            grade.gradename
+        FROM
+            student
+            INNER JOIN grade ON student.gradeid = grade.id
+        WHERE
+        student.id = #{id}
+    </select>
+
+</mapper>

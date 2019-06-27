@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生管理系统</title>
+    <link rel="stylesheet" href="" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.css}">
+</head>
+<body>
+<div th:include="public :: public"></div>
+    <div style="padding:  50px 0 0 0" align="center">
+        <h1 align="center">欢迎来到学生管理系统</h1><br>
+        <div class="card" style="width: 500px;height:200px">
+            <div class="card-header">
+                系统说明
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">系统提供了更全的操作</h5>
+                <p class="card-text">能将信息进行统一的管理，并且及时的调用！</p>
+                <a href="#" class="btn btn-primary">让我们来了解下</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
