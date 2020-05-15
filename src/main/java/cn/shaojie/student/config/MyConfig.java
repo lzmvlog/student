@@ -2,6 +2,7 @@ package cn.shaojie.student.config;
 
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 /**
@@ -11,4 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 @Configuration
 public class MyConfig extends WebMvcConfigurationSupport {
 
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/webjars/**","/static/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/","classpath:/static/");
+        super.addResourceHandlers(registry);
+    }
+    
 }
